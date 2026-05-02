@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="color-scheme" content="dark">
+    <meta name="theme-color" content="#020617">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <title class="main-title">Solo Leveling System | v1.0</title>
+    <link rel="manifest" href="manifest.json">
+    <link rel="icon" href="new girl.png">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="holo-scanlines"></div> <div id="dashboard">
+        
+    </div>
+
+    <div class="app-container">
+        <header class="main-header">
+            <div class="logo">SYSTEM<span>.OS</span></div>
+            <div id="phase-title" class="phase-title">PHASE: THE AWAKENING</div>
+            <div class="status-indicators">
+                <span id="sync-status">● SYNCED</span>
+                <span id="clock">00:00:00</span>
+            </div>
+        </header>
+
+        <main id="dashboard" class="dashboard-grid">
+
+            <section class="card profile-card">
+                <div class="profile-header">
+                    <div class="avatar-wrapper">
+                        <img src="shared image (19).jpg" alt="User Avatar" class="avatar">
+                    </div>
+                    <div class="player-info">
+                        <h2 id="display-name">Chris</h2>
+                        <p class="rank-text">RANK: <span
+                        id="display-rank">E</span></p>
+                        <p class="title-text">TITLE: <span
+                        id="display-title">Newcomer</span></p>
+                        <div class="buffs-container-wrapper">
+                            <div class="section-label">ACTIVE BUFFS</div>
+                            <div id="buffs-container" class="buffs-list">
+                                <!-- Buff items will be dynamically added here -->
+                        </div>
+                    </div>
+                </div>
+
+                <div class="xp-container">
+                    <div class="xp-header">
+                        <span>LEVEL <span id="display-level">1</span></span>
+                        <span><span id="current-xp">0</span> / <span id="target-xp">100</span> XP</span>
+                    </div>
+                    <div class="progress-bar">
+                        <div id="xp-bar-fill" class="fill" style="width: 0%"></div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="card console-card">
+                <h3 class="glow-text">SYSTEM LOG</h3>
+
+                <p id="active-quest" style="color: #ff4d4d; font-size: 0.8rem;"></p>
+                <div id="system-log" class="log-output">
+                    </div>
+
+                <div class="cli-input-wrapper">
+                    <span class="prompt">></span>
+                    <input type="text" id="cli-input" placeholder="Enter Command (e.g. 'add xp 20')" autofocus>
+                </div>
+            </section>
+
+            <section class="card skills-card">
+                <h3>SKILL PROFICIENCY</h3>
+                <div id="skills-container">
+                    <div class="skill-item">
+                        <div class="skill-info"><span>CODING</span><span class="skill-lv">LVL 12</span></div>
+                        <div class="skill-bar-bg"><div class="skill-bar-fill" style="width: 80%;"></div></div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-info"><span>FITNESS</span><span class="skill-lv">LVL 5</span></div>
+                        <div class="skill-bar-bg"><div class="skill-bar-fill" style="width: 30%;"></div></div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="card stats-card analysis-card">
+                <h3>ANALYSIS</h3>
+                <div class="stat-row">
+                    <span>Failures Logged</span>
+                    <span id="stat-failures" class="value">0</span>
+                </div>
+                <div class="stat-row">
+                    <span>Redemptions</span>
+                    <span id="stat-redemptions" class="value">0</span>
+                </div>
+                <div class="stat-row">
+                    <span>Efficiency</span>
+                    <span id="stat-efficiency" class="value">0%</span>
+                </div>
+                <div class="stat-row stat-streak">
+                    <span>Current Streak</span>
+                    <span id="stat-streak" class="value">0</span>
+                </div>
+            </section>
+
+            <section class="card quest-card">
+                <h3>DAILY QUEST</h3>
+                <div id="quest-list">
+                </div>
+                <div class="quest-controls">
+                    <input type="text" id="quest-input" placeholder="New Quest Name...">
+                    <button onclick="addNewQuest()">ADD</button>
+                </div>
+            </section>
+
+            <section class="card habit-card">
+                <h3>HABIT CONSISTENCY (LAST 7 DAYS)</h3>
+                <div class="habit-graph" id="habit-bars">
+                    <div class="habit-bar-wrapper">
+                        <div class="habit-bar" style="height: 60%"></div><span>M</span></div>
+                    <div class="habit-bar-wrapper">
+                        <div class="habit-bar" style="height: 90%;"></div><span>T</span></div>
+                    <div class="habit-bar-wrapper">
+                        <div class="habit-bar" style="height: 40%;"></div><span>W</span></div>
+                    <div class="habit-bar-wrapper">
+                        <div class="habit-bar" style="height: 100%;"></div><span>Th</span></div>
+                    <div class="habit-bar-wrapper">
+                        <div class="habit-bar" style="height: 75%;"></div><span>F</span></div>
+                    <div class="habit-bar-wrapper">
+                        <div class="habit-bar" style="height: 20%;"></div><span>Sa</span></div>
+                    <div class="habit-bar-wrapper">
+                        <div class="habit-bar" style="height: 0%;"></div><span>Su</span></div>
+                </div>
+            </section>
+
+            <section class="card boss-card">
+                <div class="boss-container">
+                    <h3 class="boss-name">THE SHADOW OF REGRET</h3>
+
+                    <div class="boss-sprite-container floating-animation">
+                        <div id="damage-container"></div>
+                        <div class="boss-shadow-aura"></div>
+                        <div class="boss-sprite"></div>
+                    </div>
+
+                    <div class="hp-bar-container">
+                        <div id="boss-hp-fill" class="hp-fill"></div>
+
+                        <div class="hp-green-sheen"></div>
+
+                        <div class="hp-segments"></div>
+                        
+                        <span class="hp-text">HP: <span id="boss-hp-val">1000</span>/1000</span>
+                    </div>
+
+                    <p class="boss-description">Every clean day strikes the Shadow. Every relapse heals its wounds.</p>
+                </div>
+            </section>
+
+            <section class="card social-card">
+                <h3 class="glow-text">AFFINITY: New Girl</h3>
+                <p class="rank-text">RANK: <span id="affinity-rank">Friendly Acquaintance</span></p>
+
+                <div class="sprite-stage">
+                    <div class="pixel-girl-sprite"></div>
+                </div>
+
+                <div class="heart-gauge-wrapper">
+                    <div class="section-label">INTERACTION HEALTH</div>
+                    <div class="heart-gauge-container">
+                        <div id="affinity-fill-hearts" class="heart-fill" style="width: 15%;"></div>
+                        <div class="heart-mask"></div>
+                        <span class="affinity-percent">
+                            <span id="affinity-hearts-val">1</span>/10
+                        </span>
+                    </div>
+                </div>
+
+                <div id="affinity-log" class="system-log-mini" style="font-size: 0.8rem; color: #aaa;">
+                    <p>> [SYSTEM]: Coincidence detected. Rapport +5.</p>
+                </div>
+            </section>
+
+        </main>
+    </div>
+
+    <div id="system-overlay" class="overlay-hidden">
+        <div class="overlay-content">
+            <h2 id="overlay-title">RANK UP</h2>
+            <p id="overlay-msg">New Title Acquired: <span id="new-title-name"></span></p>
+            <button onclick="closeOverlay()">CONFIRM</button>
+        </div>
+    </div>
+
+<svg style="display:none;">
+    <filter id="noise">
+        <feTurbulence type="fractalNoise" baseFrequency="0.8" numOctaves="4"
+        stitchTiles="stitch" />
+        <feColorMatrix type="saturate" values="0" />
+    </filter>
+</svg>
+
+    <script src="script.js"></script>
+</body>
+</html>

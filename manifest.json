@@ -1,0 +1,22 @@
+{
+    "short_name": "System.OS",
+    "name": "Solo Leveling: System.OS",
+    "icons": [
+        {
+            "src": "new girl.png",
+            "sizes": "512x512",
+            "type": "image/png",
+            "purpose": "any maskable"
+        },
+        {
+            "src": "pixel-girl_preview_rev_1.png",
+            "sizes": "192x192",
+            "type": "image/png",
+            "purpose": "any maskable"
+        }
+    ],
+    "start_url": "./index.html",
+    "background_color": "#0a0a0f",
+    "display": "standalone",
+    "theme_color": "#bc6ff1"
+}
